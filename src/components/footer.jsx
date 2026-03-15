@@ -12,7 +12,10 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-blue-950 text-white pt-20 pb-10 relative overflow-hidden">
+    <footer
+      className="bg-blue-950 text-white pt-20 pb-10 relative overflow-hidden"
+      data-aos="fade"
+    >
       {/* لمسة فنية في الخلفية */}
       <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-blue-500 to-transparent"></div>
 
@@ -100,16 +103,16 @@ const Footer = () => {
             <h4 className="text-lg font-bold mb-6 border-b border-blue-800 pb-2">
               اتصل بنا
             </h4>
-            <ul className="space-y-4 text-blue-200 text-sm">
-              <li className="flex items-center gap-3 justify-end">
+            <ul className="space-y-4 text-blue-200 text-sm" dir="ltr">
+              <li className="flex items-center gap-3">
                 <span>القاهرة، جمهورية مصر العربية</span>
                 <MapPin size={16} className="text-blue-500" />
               </li>
-              <li className="flex items-center gap-3 justify-end">
+              <li className="flex items-center gap-3">
                 <span>+20 1XX XXX XXXX</span>
                 <Phone size={16} className="text-blue-500" />
               </li>
-              <li className="flex items-center gap-3 justify-end">
+              <li className="flex items-center gap-3 justify-start">
                 <span>info@reyada-school.com</span>
                 <Mail size={16} className="text-blue-500" />
               </li>

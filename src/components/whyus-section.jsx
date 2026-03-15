@@ -36,7 +36,7 @@ const WhyUsSection = () => {
   ];
 
   return (
-    <section className="relative py-16 bg-white">
+    <section className="relative py-16 bg-white" data-aos="fade-right">
       {/* هذا الـ -mt-16 يجعل السيكشن يرتفع قليلاً فوق الـ Hero لكسر الرتابة */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* شبكة البطاقات (Grid) */}

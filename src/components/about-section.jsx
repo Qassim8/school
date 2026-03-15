@@ -1,26 +1,19 @@
 import React from "react";
 import { BookOpen, Award, CheckCircle, GraduationCap } from "lucide-react"; // تأكد من تثبيت lucide-react
-import useIntersectionObserver from "../hooks/useIntersectionObserver";
 
 const AboutSection = () => {
-  const ref = useIntersectionObserver();
-
   return (
-    <section
-      ref={ref}
-      className="py-24  overflow-hidden animate-on-scroll"
-      id="about"
-    >
+    <section className="py-24  overflow-hidden" data-aos="fade-left" id="about">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center gap-16">
           {/* الجانب الأيمن: المحتوى النصي */}
           <div className="flex-1 text-right order-2 lg:order-1">
-            <h2 className="text-3xl lg:text-5xl font-extrabold text-blue-900 mb-8 leading-snug">
+            <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-blue-900 mb-6 sm:mb-8 leading-snug">
               من بذرة طموح.. <br />
               <span className="text-blue-600">إلى صرح تعليمي متكامل</span>
             </h2>
 
-            <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
+            <div className="space-y-4 sm:space-y-6 text-base sm:text-lg text-gray-700 leading-relaxed">
               <p>
                 بدأت رحلتنا بفكرة بسيطة وبذرة صغيرة؛ حيث انطلقنا كمعهد تعليمي
                 متواضع يهدف لتمكين الطلاب وتطوير مهاراتهم في بيئة داعمة.

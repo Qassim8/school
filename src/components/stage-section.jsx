@@ -33,43 +33,43 @@ const StagesSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-white" id="stage">
+    <section className="py-24 bg-white" data-aos="zoom-in" id="stage">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl lg:text-4xl font-extrabold text-blue-900 mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-blue-900 mb-3 sm:mb-4">
             برامجنا التعليمية المتكاملة
           </h2>
-          <p className="text-gray-600">
+          <p className="text-sm sm:text-base text-gray-600 px-4 sm:px-0">
             نرافق أبناءنا في كافة مراحلهم الدراسية، من الخطوات الأولى في الروضة
             وحتى بوابة الجامعة.
           </p>
         </div>
 
         {/* Stages Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {stages.map((stage, index) => (
             <div
               key={index}
               className="bg-blue-50 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-blue-100 group"
             >
-              <div className="p-8">
+              <div className="p-6 sm:p-8">
                 {/* Icon & Title */}
-                <div className="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center text-white mb-6 group-hover:rotate-6 transition-transform">
-                  <stage.icon size={30} />
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-blue-600 rounded-2xl flex items-center justify-center text-white mb-4 sm:mb-6 group-hover:rotate-6 transition-transform">
+                  <stage.icon size={24} className="sm:w-[30px] sm:h-[30px]" />
                 </div>
-                <h3 className="text-2xl font-bold text-blue-900 mb-2">
+                <h3 className="text-xl sm:text-2xl font-bold text-blue-900 mb-2">
                   {stage.title}
                 </h3>
-                <p className="text-blue-500 font-medium mb-4 text-sm">
+                <p className="text-blue-500 font-medium mb-3 sm:mb-4 text-sm sm:text-base">
                   {stage.subtitle}
                 </p>
-                <p className="text-gray-600 mb-6 text-sm leading-relaxed">
+                <p className="text-gray-600 mb-4 sm:mb-6 text-sm leading-relaxed">
                   {stage.description}
                 </p>
 
                 {/* Features List */}
-                <ul className="space-y-3 mb-8">
+                <ul className="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
                   {stage.features.map((feat, i) => (
                     <li
                       key={i}
