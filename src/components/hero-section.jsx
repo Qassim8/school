@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 const HeroSection = () => {
   return (
@@ -45,10 +46,18 @@ const HeroSection = () => {
           <div className="flex-1 relative w-full max-w-lg lg:max-w-none">
             <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-500">
               <div className="aspect-4/3 bg-blue-200 flex items-center justify-center">
-                {/* استبدل هذا بـ <img src="/school-hero.jpg" /> */}
-                <span className="text-blue-500 font-medium">
-                  صورة تعبيرية للطلاب أو المبنى
-                </span>
+                <Image
+                  src="/school-hero.jpg"
+                  alt="طلاب مؤسسة آمال الكباشي في بيئة تعليمية ملهمة"
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+                {/* Fallback text if image fails to load */}
+                <div className="absolute inset-0 flex items-center justify-center bg-blue-200 text-blue-500 font-medium text-center p-4">
+                  صورة تعبيرية للطلاب أو المبنى المدرسي
+                </div>
               </div>
             </div>
             {/* Decorative Circle */}

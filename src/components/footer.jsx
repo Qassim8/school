@@ -103,18 +103,18 @@ const Footer = () => {
             <h4 className="text-lg font-bold mb-6 border-b border-blue-800 pb-2">
               اتصل بنا
             </h4>
-            <ul className="space-y-4 text-blue-200 text-sm" dir="ltr">
+            <ul className="space-y-4 text-blue-200 text-sm">
               <li className="flex items-center gap-3">
-                <span>القاهرة، جمهورية مصر العربية</span>
                 <MapPin size={16} className="text-blue-500" />
+                <span>القاهرة، جمهورية مصر العربية</span>
               </li>
               <li className="flex items-center gap-3">
-                <span>+20 1XX XXX XXXX</span>
                 <Phone size={16} className="text-blue-500" />
+                <span dir="ltr">+20 1XX XXX XXXX</span>
               </li>
-              <li className="flex items-center gap-3 justify-start">
-                <span>info@reyada-school.com</span>
+              <li className="flex items-center gap-3">
                 <Mail size={16} className="text-blue-500" />
+                <span dir="ltr">info@reyada-school.com</span>
               </li>
             </ul>
           </div>

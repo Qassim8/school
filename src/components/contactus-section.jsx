@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import emailjs from "@emailjs/browser";
 import {
   MapPin,
   Phone,
@@ -13,6 +14,10 @@ import {
 } from "lucide-react";
 
 const ContactSection = () => {
+  useEffect(() => {
+    // Initialize EmailJS with your public key
+    emailjs.init("your_public_key");
+  }, []);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -22,6 +27,7 @@ const ContactSection = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
 
   const validateForm = () => {
     const newErrors = {};
@@ -55,16 +61,16 @@ const ContactSection = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
 
     // Clear error when user starts typing
     if (errors[name]) {
-      setErrors(prev => ({
+      setErrors((prev) => ({
         ...prev,
-        [name]: ""
+        [name]: "",
       }));
     }
   };
@@ -77,10 +83,21 @@ const ContactSection = () => {
     }
 
     setIsSubmitting(true);
+    setSubmitError(false);
 
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // EmailJS configuration - Replace with your actual IDs
+      const serviceId = "service_yzadpdf";
+      const templateId = "template_j7onfw8";
+
+      const templateParams = {
+        from_name: formData.name,
+        from_phone: formData.phone,
+        message: formData.message,
+        to_email: "mohamedalgasim123@gmail.com",
+      };
+
+      await emailjs.send(serviceId, templateId, templateParams);
 
       // Reset form
       setFormData({
@@ -95,9 +112,13 @@ const ContactSection = () => {
       setTimeout(() => {
         setIsSubmitted(false);
       }, 5000);
-
     } catch (error) {
       console.error("Form submission error:", error);
+      setSubmitError(true);
+      // Hide error message after 5 seconds
+      setTimeout(() => {
+        setSubmitError(false);
+      }, 5000);
     } finally {
       setIsSubmitting(false);
     }
@@ -178,11 +199,25 @@ const ContactSection = () => {
             {isSubmitted && (
               <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl flex items-center gap-3 text-green-800">
                 <CheckCircle size={20} />
-                <span className="text-sm font-medium">تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.</span>
+                <span className="text-sm font-medium">
+                  تم استلام رسالتكم بنجاح سنتواصل معكم في اقرب وقت
+                </span>
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 text-right">
+            {submitError && (
+              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl flex items-center gap-3 text-red-800">
+                <AlertCircle size={20} />
+                <span className="text-sm font-medium">
+                  المعذرة فشل ارسال الرسالة حاول مرة اخرى
+                </span>
+              </div>
+            )}
+
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-4 sm:space-y-6 text-right"
+            >
               {/* حقل الاسم */}
               <div className="relative">
                 <label className="text-xs sm:text-sm font-medium text-gray-700 mb-1 block">
@@ -201,7 +236,9 @@ const ContactSection = () => {
                     onChange={handleInputChange}
                     placeholder="الاسم الثلاثي"
                     className={`w-full px-10 sm:px-12 py-3 sm:py-3.5 border rounded-xl focus:ring-2 focus:ring-blue-200 focus:border-blue-400 transition-all outline-none bg-gray-50/50 text-sm sm:text-base ${
-                      errors.name ? "border-red-300 bg-red-50" : "border-gray-200"
+                      errors.name
+                        ? "border-red-300 bg-red-50"
+                        : "border-gray-200"
                     }`}
                   />
                 </div>
@@ -232,7 +269,9 @@ const ContactSection = () => {
                     placeholder="+20 XXXXXXXXXX"
                     dir="ltr"
                     className={`w-full px-10 sm:px-12 py-3 sm:py-3.5 border rounded-xl focus:ring-2 focus:ring-blue-200 focus:border-blue-400 transition-all outline-none bg-gray-50/50 text-sm sm:text-base ${
-                      errors.phone ? "border-red-300 bg-red-50" : "border-gray-200"
+                      errors.phone
+                        ? "border-red-300 bg-red-50"
+                        : "border-gray-200"
                     }`}
                   />
                 </div>
@@ -261,7 +300,9 @@ const ContactSection = () => {
                     placeholder="اكتب استفسارك هنا حول التسجيل أو الرسوم..."
                     rows={3}
                     className={`w-full px-10 sm:px-12 py-3 sm:py-3.5 border rounded-xl focus:ring-2 focus:ring-blue-200 focus:border-blue-400 transition-all outline-none bg-gray-50/50 resize-none text-sm sm:text-base ${
-                      errors.message ? "border-red-300 bg-red-50" : "border-gray-200"
+                      errors.message
+                        ? "border-red-300 bg-red-50"
+                        : "border-gray-200"
                     }`}
                   />
                 </div>

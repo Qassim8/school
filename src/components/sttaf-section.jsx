@@ -80,7 +80,7 @@ const TeamSection = () => {
         {/* --- المستوى الثاني: الإدارة (Administration) --- */}
         <div
           className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16 relative"
-          data-aos="fade-left"
+          data-aos="fade-up"
           data-aos-delay="200"
         >
           {/* خطوط ربط أفقية وعمودية (للـ Desktop) */}
