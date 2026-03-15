@@ -1,9 +1,16 @@
 import React from "react";
 import { BookOpen, Award, CheckCircle, GraduationCap } from "lucide-react"; // تأكد من تثبيت lucide-react
+import useIntersectionObserver from "../hooks/useIntersectionObserver";
 
 const AboutSection = () => {
+  const ref = useIntersectionObserver();
+
   return (
-    <section className="py-24  overflow-hidden" id="about">
+    <section
+      ref={ref}
+      className="py-24  overflow-hidden animate-on-scroll"
+      id="about"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center gap-16">
           {/* الجانب الأيمن: المحتوى النصي */}
