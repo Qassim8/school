@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image"; // استيراد مكون الصورة من Next.js
 import { Award, Briefcase, Users, Star } from "lucide-react";
 
 const TeamSection = () => {
@@ -10,9 +11,12 @@ const TeamSection = () => {
   ];
 
   return (
-    <section className="py-16 sm:py-24 relative overflow-hidden" id="team">
-      {/* خلفية جمالية: نقاط زرقاء وحمراء خفيفة جداً */}
-      <div className="absolute inset-0 opacity-[0.05] z-0">
+    <section
+      className="py-16 sm:py-24 bg-white relative overflow-hidden"
+      id="team"
+    >
+      {/* خلفية جمالية */}
+      <div className="absolute inset-0 opacity-[0.05] z-0 pointer-events-none">
         <svg width="100%" height="100%">
           <defs>
             <pattern
@@ -21,7 +25,7 @@ const TeamSection = () => {
               height="30"
               patternUnits="userSpaceOnUse"
             >
-              <circle cx="2" cy="2" r="1.5" fill="#dc2626" /> {/* نقاط حمراء */}
+              <circle cx="2" cy="2" r="1.5" fill="#dc2626" />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#dots)" />
@@ -40,21 +44,30 @@ const TeamSection = () => {
           <div className="w-24 h-1.5 bg-red-600 mx-auto rounded-full"></div>
         </div>
 
-        {/* --- المستوى الأول: المؤسس (The Founder) باللون الأحمر الطاغي --- */}
+        {/* --- المستوى الأول: المؤسس (المعدل لإضافة الصورة) --- */}
         <div
           className="flex justify-center mb-12 sm:mb-16 relative"
           data-aos="fade-up"
         >
           <div className="absolute top-full left-1/2 -translate-x-1/2 w-1 h-16 bg-gradient-to-b from-red-600 to-blue-200"></div>
 
-          <div className="bg-red-600 text-white p-8 lg:p-12 rounded-[3rem] shadow-2xl shadow-red-200 w-full max-w-xl relative transform hover:-translate-y-2 transition-all duration-500 border-[8px] border-white">
+          <div className="bg-red-500 text-white p-8 lg:p-12 rounded-[3rem] shadow-2xl shadow-red-200 w-full max-w-xl relative transform hover:-translate-y-2 transition-all duration-500 border-[8px] border-white">
             <Award
-              className="absolute -top-8 -right-8 text-white bg-blue-900 p-3 rounded-2xl shadow-xl border-4 border-white"
+              className="absolute -top-8 -right-8 text-yellow-300 bg-blue-900 p-3 rounded-2xl shadow-xl border-4 border-white"
               size={64}
             />
-            <div className="w-28 h-28 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-white/40 backdrop-blur-sm">
-              <span className="text-6xl font-black text-white">آ</span>
+
+            {/* الحاوية الدائرية للصورة */}
+            <div className="w-32 h-32 bg-white rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-white/40 shadow-inner overflow-hidden relative">
+              <Image
+                src="/mrs-amal-3.jpg" // مسار الصورة في مجلد public
+                alt="الأستاذة آمال كباشي - المؤسس"
+                fill // ملء الحاوية بالكامل
+                className="object-cover" // الحفاظ على النسبة والتغطية
+                priority // تحميل الصورة بأولوية عالية
+              />
             </div>
+
             <h3 className="text-3xl sm:text-4xl font-black mb-2">آمال كباشي</h3>
             <p className="text-red-100 font-bold text-lg uppercase tracking-widest mb-4">
               المؤسس ورئيس مجلس الإدارة
@@ -67,7 +80,7 @@ const TeamSection = () => {
           </div>
         </div>
 
-        {/* --- المستوى الثاني: الإدارة (Administration) دمج الأحمر والأزرق --- */}
+        {/* --- المستوى الثاني: الإدارة --- */}
         <div
           className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20 relative"
           data-aos="fade-up"
@@ -117,7 +130,7 @@ const TeamSection = () => {
           ))}
         </div>
 
-        {/* --- المستوى الثالث: المدرسون (Teachers) لمسات بسيطة --- */}
+        {/* --- المستوى الثالث: المدرسون --- */}
         <div className="relative mt-24">
           <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-white px-8 py-3 rounded-full border-2 border-red-600 flex items-center gap-3 text-red-600 font-black shadow-lg z-10">
             <Users size={20} />

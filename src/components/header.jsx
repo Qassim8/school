@@ -9,13 +9,13 @@ export default function Header() {
   return (
     <nav className="fixed w-full z-50 bg-white/90 backdrop-blur-lg border-b border-gray-100 shadow-sm">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20 md:h-24">
+        <div className="flex justify-between items-center ">
           {/* Logo - تكبير اللوجو قليلاً ليعطي فخامة */}
           <div className="shrink-0 flex items-center">
             <Link href="/">
               <Image
                 src="/logo.png"
-                alt="Al-Fajr Logo"
+                alt="logo"
                 width={100}
                 height={100}
                 className="h-16 md:h-20 w-auto transition-transform hover:scale-105"

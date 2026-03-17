@@ -4,7 +4,7 @@ import { ArrowLeft } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section className="relative py-20 lg:py-32 overflow-hidden" id="home">
+    <section className="relative py-20 lg:py-36 overflow-hidden" id="home">
       {/* الخلفية: دمج الأزرق مع لمحة حمراء خفيفة */}
       <div className="absolute top-0 right-0 -z-10 w-full lg:w-1/2 h-full bg-blue-50/50 rounded-bl-[100px] lg:rounded-bl-[200px]" />
       <div className="absolute top-1/4 left-0 -z-10 w-24 h-24 bg-red-100/30 rounded-full blur-3xl" />
@@ -42,7 +42,7 @@ const HeroSection = () => {
 
           {/* الجانب الأيسر: الصورة مع الـ Overlay المعالج */}
           <div className="flex-1 relative w-full order-1 lg:order-2">
-            <div className="relative z-10 w-full aspect-4/3 rounded-3xl sm:rounded-[3rem] overflow-hidden shadow-2xl border-10 border-white transform rotate-6 transition-transform duration-500 hover:rotate-0">
+            <div className="relative z-10 w-full aspect-4/3 rounded-3xl sm:rounded-[3rem] overflow-hidden shadow-2xl border-10 border-white transform rotate-3 transition-transform duration-500 hover:rotate-0">
               <Image
                 src="/1 (8).jpg"
                 alt="طلاب مؤسسة آمال كباشي"

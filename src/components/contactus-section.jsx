@@ -30,18 +30,28 @@ const ContactSection = () => {
 
   const validateForm = () => {
     const newErrors = {};
+
+    // Name validation
     if (!formData.name.trim()) {
       newErrors.name = "الاسم مطلوب";
-    } else if (formData.name.trim().length < 3) {
-      newErrors.name = "الاسم يجب أن يكون 3 أحرف على الأقل";
+    } else if (formData.name.trim().length < 8) {
+      newErrors.name = "الاسم يجب أن يكون 8 أحرف على الأقل";
+    } else if (!/^[a-zA-Z\u0600-\u06FF\s]+$/.test(formData.name.trim())) {
+      newErrors.name = "الاسم يجب أن يحتوي على أحرف عربية أو إنجليزية فقط";
     }
 
+    // Phone validation
     if (!formData.phone.trim()) {
       newErrors.phone = "رقم الهاتف مطلوب";
+    } else if (!/^(\+20|0)?1[0-2,5]\d{8}$/.test(formData.phone.trim())) {
+      newErrors.phone = "رقم الهاتف غير صحيح (مصري فقط)";
     }
 
+    // Message validation
     if (!formData.message.trim()) {
       newErrors.message = "الرسالة مطلوبة";
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = "الرسالة يجب أن تكون 10 أحرف على الأقل";
     }
 
     setErrors(newErrors);
@@ -186,14 +196,20 @@ const ContactSection = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     placeholder="الاسم الثلاثي"
-                    className={`w-full pr-12 pl-4 py-4 bg-gray-50 border-2 rounded-2xl outline-none transition-all focus:bg-white focus:border-red-600 ${errors.name ? "border-red-300" : "border-transparent"}`}
+                    className={`text-slate-700 w-full pr-12 pl-4 py-4 bg-gray-50 border-2 rounded-2xl outline-none transition-all focus:bg-white focus:border-red-600 ${errors.name ? "border-red-300" : "border-transparent"}`}
                   />
                 </div>
+                {errors.name && (
+                  <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
+                    <AlertCircle size={12} />
+                    {errors.name}
+                  </p>
+                )}
               </div>
 
               <div className="space-y-1">
                 <label className="text-xs font-bold text-blue-900 mr-2">
-                  رقم الهاتف
+                  رقم الهاتف <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
                   <Phone
@@ -207,14 +223,20 @@ const ContactSection = () => {
                     onChange={handleInputChange}
                     placeholder="+20 XXX XXX XXXX"
                     dir="ltr"
-                    className={`w-full pr-12 pl-4 py-4 bg-gray-50 border-2 rounded-2xl outline-none transition-all focus:bg-white focus:border-red-600 text-right ${errors.phone ? "border-red-300" : "border-transparent"}`}
+                    className={`text-slate-700 w-full pr-12 pl-4 py-4 bg-gray-50 border-2 rounded-2xl outline-none transition-all focus:bg-white focus:border-red-600 text-right ${errors.phone ? "border-red-300" : "border-transparent"}`}
                   />
                 </div>
+                {errors.phone && (
+                  <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
+                    <AlertCircle size={12} />
+                    {errors.phone}
+                  </p>
+                )}
               </div>
 
               <div className="space-y-1">
                 <label className="text-xs font-bold text-blue-900 mr-2">
-                  رسالتك
+                  رسالتك <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
                   <MessageSquare
@@ -227,9 +249,15 @@ const ContactSection = () => {
                     onChange={handleInputChange}
                     placeholder="كيف يمكننا مساعدتك؟"
                     rows={4}
-                    className={`w-full pr-12 pl-4 py-4 bg-gray-50 border-2 rounded-2xl outline-none transition-all focus:bg-white focus:border-red-600 resize-none ${errors.message ? "border-red-300" : "border-transparent"}`}
+                    className={`text-slate-700 w-full pr-12 pl-4 py-4 bg-gray-50 border-2 rounded-2xl outline-none transition-all focus:bg-white focus:border-red-600 resize-none ${errors.message ? "border-red-300" : "border-transparent"}`}
                   />
                 </div>
+                {errors.message && (
+                  <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
+                    <AlertCircle size={12} />
+                    {errors.message}
+                  </p>
+                )}
               </div>
 
               <button
