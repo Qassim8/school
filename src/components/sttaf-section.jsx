@@ -2,7 +2,6 @@ import React from "react";
 import { Award, Briefcase, Users, Star } from "lucide-react";
 
 const TeamSection = () => {
-  // بيانات افتراضية للمدرسين - يمكن استبدالها ببيانات حقيقية
   const teachers = [
     { name: "أ. محمد صلاح", subject: "اللغة العربية", initial: "م" },
     { name: "أ. فاطمة عمر", subject: "الرياضيات", initial: "ف" },
@@ -11,21 +10,18 @@ const TeamSection = () => {
   ];
 
   return (
-    <section
-      className="py-16 sm:py-24 bg-blue-50/50 relative overflow-hidden"
-      id="team"
-    >
-      {/* خلفية جمالية خفيفة */}
-      <div className="absolute inset-0 opacity-[0.03] z-0">
-        <svg width="100%" h="100%">
+    <section className="py-16 sm:py-24 relative overflow-hidden" id="team">
+      {/* خلفية جمالية: نقاط زرقاء وحمراء خفيفة جداً */}
+      <div className="absolute inset-0 opacity-[0.05] z-0">
+        <svg width="100%" height="100%">
           <defs>
             <pattern
               id="dots"
-              width="20"
-              height="20"
+              width="30"
+              height="30"
               patternUnits="userSpaceOnUse"
             >
-              <circle cx="2" cy="2" r="1.5" fill="#1e3a8a" />
+              <circle cx="2" cy="2" r="1.5" fill="#dc2626" /> {/* نقاط حمراء */}
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#dots)" />
@@ -35,145 +31,120 @@ const TeamSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         {/* Header */}
         <div className="mb-12 sm:mb-20">
-          <span className="inline-block py-1 px-4 rounded-full bg-blue-100 text-blue-600 text-sm font-bold mb-4">
+          <span className="inline-block py-1 px-6 rounded-full bg-red-50 text-red-600 text-sm font-bold mb-4 border border-red-100">
             القيادة والكفاءة
           </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-blue-900 mb-4 sm:mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-blue-900 mb-6">
             تعرف على صناع التميز
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed px-4 sm:px-0">
-            نخبة من التربويين والإداريين كرسوا خبراتهم لبناء جيل قيادي مبدع في
-            بيئة تعليمية آمنة وملهمة.
-          </p>
+          <div className="w-24 h-1.5 bg-red-600 mx-auto rounded-full"></div>
         </div>
 
-        {/* --- المستوى الأول: المؤسس (The Founder) --- */}
+        {/* --- المستوى الأول: المؤسس (The Founder) باللون الأحمر الطاغي --- */}
         <div
           className="flex justify-center mb-12 sm:mb-16 relative"
           data-aos="fade-up"
         >
-          {/* خط ربط عمودي */}
-          <div className="absolute top-full left-1/2 -translate-x-1/2 w-0.5 sm:w-1 h-12 sm:h-16 bg-blue-200"></div>
+          <div className="absolute top-full left-1/2 -translate-x-1/2 w-1 h-16 bg-gradient-to-b from-red-600 to-blue-200"></div>
 
-          <div className="bg-blue-900 text-white p-6 sm:p-8 lg:p-10 rounded-[2.5rem] shadow-2xl shadow-blue-200 w-full max-w-lg relative transform hover:-translate-y-2 transition-transform duration-300">
+          <div className="bg-red-600 text-white p-8 lg:p-12 rounded-[3rem] shadow-2xl shadow-red-200 w-full max-w-xl relative transform hover:-translate-y-2 transition-all duration-500 border-[8px] border-white">
             <Award
-              className="absolute -top-6 -right-6 text-yellow-400 bg-white p-2 rounded-full shadow-lg"
-              size={50}
+              className="absolute -top-8 -right-8 text-white bg-blue-900 p-3 rounded-2xl shadow-xl border-4 border-white"
+              size={64}
             />
-            <div className="w-24 h-24 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-white/20">
-              {/* هنا يمكن وضع صورة المؤسس */}
-              <span className="text-5xl font-black text-white">آ</span>
+            <div className="w-28 h-28 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-white/40 backdrop-blur-sm">
+              <span className="text-6xl font-black text-white">آ</span>
             </div>
-            <h3 className="text-2xl sm:text-3xl font-black mb-2">
-              أمال الكباشي
-            </h3>
-            <p className="text-blue-200 font-medium text-base sm:text-lg uppercase tracking-wider">
+            <h3 className="text-3xl sm:text-4xl font-black mb-2">آمال كباشي</h3>
+            <p className="text-red-100 font-bold text-lg uppercase tracking-widest mb-4">
               المؤسس ورئيس مجلس الإدارة
             </p>
-            <p className="text-blue-100 mt-4 text-sm leading-relaxed max-w-sm mx-auto">
-              رؤية طموحة بدأت بفكرة، وكبرت لتصبح صرحاً تعليمياً معتمداً يخدم جيل
-              المستقبل.
+            <div className="h-px w-20 bg-white/30 mx-auto mb-4"></div>
+            <p className="text-white/90 text-sm leading-relaxed max-w-sm mx-auto italic">
+              "رؤية طموحة بدأت بفكرة، وكبرت لتصبح صرحاً تعليمياً معتمداً يخدم
+              جيل المستقبل."
             </p>
           </div>
         </div>
 
-        {/* --- المستوى الثاني: الإدارة (Administration) --- */}
+        {/* --- المستوى الثاني: الإدارة (Administration) دمج الأحمر والأزرق --- */}
         <div
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16 relative"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20 relative"
           data-aos="fade-up"
-          data-aos-delay="200"
         >
-          {/* خطوط ربط أفقية وعمودية (للـ Desktop) */}
-          <div className="hidden md:block absolute -top-12 sm:-top-16 left-1/2 -translate-x-1/2 w-1 h-12 sm:h-16 bg-blue-200 z-0"></div>
-
-          {/* الإداري الأول (عزام خوجلي) */}
-          <div
-            className="bg-white p-6 sm:p-8 rounded-3xl shadow-xl shadow-blue-100 border border-blue-50 relative group transition-all hover:border-blue-100 hover:shadow-2xl"
-            data-aos="fade-up"
-            data-aos-delay="300"
-          >
-            <Briefcase className="w-12 h-12 text-blue-600 bg-blue-100 p-2.5 rounded-2xl mb-6 mx-auto" />
-            <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-5 border-2 border-blue-100">
-              {/* صورة الإداري */}
-              <span className="text-4xl font-bold text-blue-900">ع</span>
+          {[
+            { name: "د. عزام خوجلي", role: "الشؤون الأكاديمية", initial: "ع" },
+            {
+              name: "أ. خوجلي",
+              role: "المدير العام للمؤسسة",
+              initial: "خ",
+              featured: true,
+            },
+            { name: "أ. هـ.", role: "شؤون الطلاب والتسجيل", initial: "هـ" },
+          ].map((admin, idx) => (
+            <div
+              key={idx}
+              className={`p-8 rounded-[2.5rem] transition-all duration-500 border-2 group
+                ${
+                  admin.featured
+                    ? "bg-white border-red-600 shadow-2xl shadow-red-100 md:-translate-y-6"
+                    : "bg-white border-blue-50 shadow-xl shadow-blue-50 hover:border-red-200"
+                }`}
+            >
+              <Briefcase
+                className={`w-14 h-14 p-3 rounded-2xl mb-6 mx-auto transition-colors
+                ${admin.featured ? "bg-red-600 text-white" : "bg-blue-50 text-blue-600 group-hover:bg-red-50 group-hover:text-red-600"}`}
+              />
+              <div
+                className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5 border-2 
+                ${admin.featured ? "bg-red-50 border-red-200" : "bg-blue-50 border-blue-100"}`}
+              >
+                <span
+                  className={`text-4xl font-black ${admin.featured ? "text-red-600" : "text-blue-900"}`}
+                >
+                  {admin.initial}
+                </span>
+              </div>
+              <h4 className="text-2xl font-black text-blue-900 mb-1">
+                {admin.name}
+              </h4>
+              <p
+                className={`font-bold text-sm ${admin.featured ? "text-red-600" : "text-blue-500"}`}
+              >
+                {admin.role}
+              </p>
             </div>
-            <h4 className="text-2xl font-bold text-blue-950 mb-1">
-              د. عزام خوجلي
-            </h4>
-            <p className="text-blue-600 font-medium text-sm">
-              الشؤون الأكاديمية
-            </p>
-          </div>
-
-          {/* إداري ثاني (مثال) */}
-          <div
-            className="bg-white p-6 sm:p-8 rounded-3xl shadow-xl shadow-blue-100 border border-blue-50 relative group transition-all hover:border-blue-100 hover:shadow-2xl md:-translate-y-6"
-            data-aos="fade-up"
-            data-aos-delay="400"
-          >
-            <Briefcase className="w-12 h-12 text-blue-600 bg-blue-100 p-2.5 rounded-2xl mb-6 mx-auto" />
-            <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-5 border-2 border-blue-100">
-              <span className="text-4xl font-bold text-blue-900">أ</span>
-            </div>
-            <h4 className="text-2xl font-bold text-blue-950 mb-1">أ. خوجلي</h4>
-            <p className="text-blue-600 font-medium text-sm">
-              المدير العام للمؤسسة
-            </p>
-          </div>
-
-          {/* إداري ثالث (مثال) */}
-          <div
-            className="bg-white p-6 sm:p-8 rounded-3xl shadow-xl shadow-blue-100 border border-blue-50 relative group transition-all hover:border-blue-100 hover:shadow-2xl"
-            data-aos="fade-up"
-            data-aos-delay="500"
-          >
-            <Briefcase className="w-12 h-12 text-blue-600 bg-blue-100 p-2.5 rounded-2xl mb-6 mx-auto" />
-            <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-5 border-2 border-blue-100">
-              <span className="text-4xl font-bold text-blue-900">هـ</span>
-            </div>
-            <h4 className="text-2xl font-bold text-blue-950 mb-1">أ.</h4>
-            <p className="text-blue-600 font-medium text-sm">
-              شؤون الطلاب والتسجيل
-            </p>
-          </div>
+          ))}
         </div>
 
-        {/* --- المستوى الثالث: المدرسون (Teachers) --- */}
-        <div className="relative mt-16 sm:mt-24">
-          {/* عنوان فرعي */}
-          <div className="relative -top-6 sm:absolute sm:-top-12 left-1/2 -translate-x-1/2 bg-blue-50 px-4 sm:px-6 py-2 rounded-full border border-blue-100 flex items-center gap-2 text-blue-800 font-bold shadow-sm z-10 text-sm sm:text-base">
-            <Users size={16} className="sm:w-5 sm:h-5" />
+        {/* --- المستوى الثالث: المدرسون (Teachers) لمسات بسيطة --- */}
+        <div className="relative mt-24">
+          <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-white px-8 py-3 rounded-full border-2 border-red-600 flex items-center gap-3 text-red-600 font-black shadow-lg z-10">
+            <Users size={20} />
             الكادر التعليمي المتميز
           </div>
 
-          {/* شبكة المدرسين (Grid) */}
-          <div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-10"
-            data-aos="zoom-in"
-            data-aos-delay="600"
-          >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-12">
             {teachers.map((teacher, index) => (
               <div
                 key={index}
-                className="bg-white/70 p-4 sm:p-6 rounded-2xl border border-blue-100/50 hover:bg-white hover:shadow-lg transition-all group text-right"
-                data-aos="fade-up"
-                data-aos-delay={700 + index * 100}
+                className="bg-white p-6 rounded-3xl border border-blue-50 hover:border-red-600 hover:shadow-2xl transition-all duration-500 group text-right"
               >
-                <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-blue-600 text-white rounded-xl flex items-center justify-center font-bold text-xl sm:text-2xl shrink-0">
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 bg-blue-900 group-hover:bg-red-600 text-white rounded-2xl flex items-center justify-center font-black text-2xl transition-colors duration-500 shadow-lg">
                     {teacher.initial}
                   </div>
-                  <div className="text-center sm:text-right">
-                    <h5 className="font-bold text-blue-950 group-hover:text-blue-700 transition-colors text-sm sm:text-base">
+                  <div>
+                    <h5 className="font-black text-blue-950 group-hover:text-red-600 transition-colors">
                       {teacher.name}
                     </h5>
-                    <p className="text-xs sm:text-sm text-gray-500">
+                    <p className="text-sm text-gray-500 font-medium">
                       {teacher.subject}
                     </p>
-                    <div className="flex gap-0.5 mt-1 text-yellow-400 justify-center sm:justify-start">
-                      <Star size={10} className="fill-yellow-400" />
-                      <Star size={10} className="fill-yellow-400" />
-                      <Star size={10} className="fill-yellow-400" />
+                    <div className="flex gap-1 mt-1 text-red-500">
+                      <Star size={12} className="fill-red-500" />
+                      <Star size={12} className="fill-red-500" />
+                      <Star size={12} className="fill-red-500" />
                     </div>
                   </div>
                 </div>
